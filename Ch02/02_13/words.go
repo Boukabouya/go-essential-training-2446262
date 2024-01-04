@@ -12,7 +12,7 @@ func main() {
 	Sew me a sail
 	To catch me the wind
 	`
-	textSlice := strings.Fields(text) // Split text into words
+	textSlice := strings.Fields(text) // Split text into words separated by whitespace by default
 	wordFrequency := make(map[string]int)
 
 	// Convert each word to lowercase and count frequency
