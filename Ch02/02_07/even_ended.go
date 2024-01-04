@@ -12,8 +12,17 @@ import (
 )
 
 func main() {
-	n := 42
-	s := fmt.Sprintf("%d", n)
+	n := 4244
+	s := fmt.Sprintf("%d", n) //return string , so n convert to string type
 
-	fmt.Printf("s = %q (type %T)\n", s, s)
+	fmt.Printf("s = %q (type %T)\n", s, s) //%q will add the quotes around the string
+
+	if len(s) == 4 && s[0] == s[len(s)-1] {
+		for i := 0; i <= 4; i++ {
+			continue
+		}
+		fmt.Println("An even ended number")
+	} else {
+		fmt.Println("Not an even ended number")
+	}
 }
