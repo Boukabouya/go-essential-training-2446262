@@ -17,6 +17,7 @@ func (b Budget) TimeLeft() time.Duration {
 	return b.Expires.Sub(time.Now().UTC())
 }
 
+// Every time you change the struct you are going to pass a pointer receiver.
 func (b *Budget) Update(sum float64) {
 	b.Balance += sum
 }
