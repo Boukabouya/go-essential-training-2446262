@@ -1,4 +1,4 @@
-// Go's map data structure
+// Go's map data structure : A map is a data structure where keys points to values
 package main
 
 import (
