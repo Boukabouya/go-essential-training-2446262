@@ -14,6 +14,7 @@ func main() {
 	}
 
 	s2, err := sqrt(-2.0)
+	// by doing care about the error our code will be more robust and go forse me to look at the error otherwise it's tedious
 	if err != nil {
 		fmt.Printf("ERROR: %s\n", err)
 	} else {
