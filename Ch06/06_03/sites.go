@@ -4,6 +4,7 @@ package main
 import (
 	"fmt"
 	"net/http"
+	"sync"
 )
 
 func returnType(url string) {
@@ -16,6 +17,18 @@ func returnType(url string) {
 	defer resp.Body.Close()
 	ctype := resp.Header.Get("content-type")
 	fmt.Printf("%s -> %s", url, ctype)
+}
+
+func sender(ch chan<- string, value string, wg *sync.WaitGroup) {
+	defer wg.Done()
+	ch <- value
+	fmt.Printf("Sent: %d\n", value)
+}
+
+func receiver(ch <-chan string, wg *sync.WaitGroup) {
+	defer wg.Done()
+	val := <-ch
+	fmt.Printf("Received: %d\n", val)
 }
 
 func main() {
@@ -32,4 +45,21 @@ func main() {
 	}
 
 	// TODO: Wait using channel
+	var wg sync.WaitGroup
+
+	// Add a sender
+	for _, url := range urls {
+		wg.Add(1)
+		go sender(ch, url, &wg)
+	}
+
+	// Add three receivers
+	for i := 0; i < 3; i++ {
+		wg.Add(1)
+		go receiver(ch, &wg)
+	}
+
+	// Wait for all goroutines to finish
+
+	wg.Wait()
 }
