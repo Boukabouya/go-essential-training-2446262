@@ -1,0 +1,10 @@
+2024/01/06 09:50:21 error: open /path/to/config.toml: no such file or directory
+can't open configuration file
+main.readConfig
+	/home/rayeneamina/go-essential-training-2446262/Ch05/05_01/errors.go:20
+main.main
+	/home/rayeneamina/go-essential-training-2446262/Ch05/05_01/errors.go:40
+runtime.main
+	/usr/local/go/src/runtime/proc.go:267
+runtime.goexit
+	/usr/local/go/src/runtime/asm_amd64.s:1650
